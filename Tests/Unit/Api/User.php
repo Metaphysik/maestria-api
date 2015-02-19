@@ -9,33 +9,17 @@ namespace Maestria\Api\Tests\Unit {
 
     class User extends \atoum\test
     {
+        public function beforeTestMethod($testMethod)
+        {
+            $this->define->api = '\Camael\Api\Tests\Unit\Asserters\Api';
+        }
+
         public function testIndex()
         {
-            $dir = realpath(__DIR__.'/../../');
-            \Sohoa\Framework\Framework::initialize($dir);
+            $api = $this->api;
 
-
-            $framework  = new \Sohoa\Framework\Framework('dev');
-
-        	$router     = new \Mock\Sohoa\Framework\Router();
-            $router->setFramework($framework);
-
-                    
-
-            $framework->setRouter($router);
-            $dispatcher = $framework->getDispatcher();
-            $view       = $framework->getView();
-
-            $framework->initErrorHandler();
-            $framework->initKit();
-
-            $router->construct();
-
-            var_dump($router->getMethod());
-            $router->route('/');
-
-            
-            $dispatcher->dispatch($router, $view, $framework);
+            $api->get('/')->body->contains('Bouya');
+            $api->get('/login')->json->hasKey('d');
         }
 
     }

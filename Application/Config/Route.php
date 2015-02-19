@@ -4,7 +4,7 @@
 
 // Defines the defaults route
 $this->get('/', ['as' => 'root','to' => 'Main#index']);              // Help message
-$this->post('/login', ['as' => 'login', 'to' => 'User#Login']);      // user: foo, pass: bawa
+$this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo, pass: bawa
 
 $this->resource('etablissement');
 

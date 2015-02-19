@@ -16,4 +16,8 @@ class Main extends Kit {
         $this->greut->render(); // Go to hoa://Application/View/Main/Foo.tpl.php
     }
 
+    public function loginAction() {
+    	echo json_encode(['dd' => 'wawa']);
+    }
+
 }
