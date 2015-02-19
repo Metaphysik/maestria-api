@@ -2,7 +2,6 @@
 
 namespace Camael\Api\Tests\Unit\Asserters;
 
-
 class Api extends \atoum\asserters\variable
 {
     private $_host = '';
