@@ -7,13 +7,7 @@ class Main extends Generic
     public function indexAction()
     {
         echo '<html><head><title>Maestria Api</title></head><body><h1>Maestria API</h1><h2>Contact administrator</h2></body></html>';
-    }
-
-    public function sampleAction()
-    { // Routed by /Main/Sample/ with generic route
-
-        $this->data->sample = ': Gordon foobar';
-        $this->greut->render(); // Go to hoa://Application/View/Main/Foo.tpl.php
+        // TODO : Help message with full api
     }
 
     public function loginAction()
@@ -23,12 +17,15 @@ class Main extends Generic
 
         if ($user === null) {
             $this->error('Post data : user are not found');
+            $this->nok();
         }
 
         if ($password === null) {
             $this->error('Post data : password are not found');
+            $this->nok();
         }
 
+        $this->ok();
         echo $this->getApiJson();
     }
 }
