@@ -2,7 +2,8 @@
     "name": "sohoa/sohoa",
     "require": {
         "sohoa/framework": "dev-master",
-        "hoa/socket"     : "~0.0"
+        "hoa/socket"     : "~0.0",
+        "hoa/database"   : "*"
     },
     "require-dev": {
     	"atoum/atoum" : "~2.0"

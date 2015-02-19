@@ -14,13 +14,5 @@ namespace Maestria\Api\Tests\Unit {
             $this->define->api = '\Camael\Api\Tests\Unit\Asserters\Api';
         }
 
-        public function testIndex()
-        {
-            $api = $this->api;
-
-            $api->get('/')->body->contains('Bouya');
-            $api->get('/login')->json->hasKey('d');
-        }
-
     }
 }
