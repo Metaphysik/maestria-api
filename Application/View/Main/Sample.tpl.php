@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \Sohoa\Framework\View\Greut $this;
- * 
+ *
  */
 
 $this->inherits('Layout/Base.tpl.php');

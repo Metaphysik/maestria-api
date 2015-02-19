@@ -10,10 +10,10 @@
 namespace Application\Bin\Command\Sample;
 
 use Hoa\Console\Chrome\Text;
-use \Hoa\Console\GetOption;
+use Hoa\Console\GetOption;
 
-class Welcome extends \Hoa\Console\Dispatcher\Kit {
-
+class Welcome extends \Hoa\Console\Dispatcher\Kit
+{
     /**
      * Options description.
      *
@@ -28,13 +28,13 @@ class Welcome extends \Hoa\Console\Dispatcher\Kit {
      * The entry method.
      *
      * @access  public
-     * @return  int
+     * @return int
      */
-    public function main() {
-
+    public function main()
+    {
         $command = null;
 
-        while (false !== $c = $this->getOption($v))
+        while (false !== $c = $this->getOption($v)) {
             switch ($c) {
 
                 case 'h':
@@ -42,6 +42,7 @@ class Welcome extends \Hoa\Console\Dispatcher\Kit {
                     return $this->usage();
                     break;
             }
+        }
 
         echo 'I do nothing :), i am just a demo';
 
@@ -52,20 +53,20 @@ class Welcome extends \Hoa\Console\Dispatcher\Kit {
      * The command usage.
      *
      * @access  public
-     * @return  int
+     * @return int
      */
-    public function usage() {
-        echo Text::colorize('Usage:', 'fg(yellow)') . "\n";
-        echo '   Welcome ' . "\n\n";
+    public function usage()
+    {
+        echo Text::colorize('Usage:', 'fg(yellow)')."\n";
+        echo '   Welcome '."\n\n";
 
         echo $this->stylize('Options:', 'h1'), "\n";
         echo $this->makeUsageOptionsList([
-            'help' => 'This help.'
+            'help' => 'This help.',
         ]);
 
         return;
     }
-
 }
 
 __halt_compiler();

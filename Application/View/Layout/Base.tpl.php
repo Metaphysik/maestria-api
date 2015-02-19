@@ -8,9 +8,9 @@
 <body>
 
 <?php
-	$this->block('c');
-	$this->endblock();
-	
+    $this->block('c');
+    $this->endblock();
+
 ?>
 
 </body>

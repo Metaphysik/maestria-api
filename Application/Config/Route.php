@@ -3,7 +3,7 @@
 /* @var $framework \Sohoa\Framework\Framework */
 
 // Defines the defaults route
-$this->get('/', ['as' => 'root','to' => 'Main#index']);              // Help message
+$this->get('/', ['as' => 'root', 'to' => 'Main#index']);              // Help message
 $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo, pass: bawa
 
 $this->resource('etablissement');
@@ -22,10 +22,7 @@ $this->resource('theme');
 $this->resource('domain');
 $this->resource('know');
 
-
-
 /* Error Handler */
-
 
 $err = $this->getFramework()->getErrorHandler();
 $err->handleErrorsAsException();
