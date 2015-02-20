@@ -16,16 +16,34 @@ class Main extends Generic
         $password   = (isset($_POST['password']) === true) ? $_POST['password'] : null;
 
         if ($user === null) {
-            $this->error('Post data : user are not found');
-            $this->nok();
+            $this->nok('Post data : user are not found');
         }
 
         if ($password === null) {
-            $this->error('Post data : password are not found');
-            $this->nok();
+            $this->nok('Post data : password are not found');
         }
 
-        $this->ok();
+        $this->log($user);
+        $this->log($password);
+
+
+        $m_user = new \Application\Model\User();
+        $bool   = $m_user->check($user, $password, true);
+
+        if($bool === false){
+            $this->nok('Your credential are not reconized');
+        }
+        else {
+            $information = $m_user->getByUser($user);
+
+            if($information !== null) {
+                $this->ok();
+                $this->data($information);
+            }
+            else {
+                $this->nok('Error API');
+            }
+        }
         echo $this->getApiJson();
     }
 }

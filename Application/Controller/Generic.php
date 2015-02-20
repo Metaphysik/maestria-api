@@ -22,9 +22,9 @@ class Generic extends Kit
         $this->_message['log'][] = vsprintf($message, $data);
     }
 
-    public function setData($message, $data = [])
+    public function data($message)
     {
-        $this->_message['data'] = vsprintf($message, $data);
+        $this->_message['data'] = $message;
     }
 
     public function status($status)
@@ -43,16 +43,14 @@ class Generic extends Kit
     public function ok($message = 'ok', $data = [])
     {
         if ($this->status(static::$ok) === true) {
-            $this->setData($message, $data);
+            $this->data(vsprintf($message, $data));
         }
     }
 
     public function nok($message = 'nok', $data = [])
     {
         if (isset($this->_message['status']) === true) {
-            if ($this->_message['status'] === static::$error) {
-                $this->setData($message, $data);
-            }
+            $this->error($message, $data);
         }
     }
 

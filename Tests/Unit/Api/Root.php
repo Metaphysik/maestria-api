@@ -25,8 +25,7 @@ namespace Maestria\Api\Tests\Unit {
             $p    = $api->post('/login');
             $json = $p->json;
 
-            echo $api->echoBody();
-
+            // echo $api->echoBody();
             $json
                 ->hasKey('status')
                 ->integer['status']->isIdenticalTo(500)
@@ -37,12 +36,23 @@ namespace Maestria\Api\Tests\Unit {
             $p    = $api->post('/login', ['user' => 'admin', 'password' => sha1('admin')]);
             $json = $p->json;
 
-            echo $api->echoBody();
+            // echo $api->echoBody();
 
             $json
                 ->hasKey('status')
                 ->integer['status']->isIdenticalTo(200)
-                ->array['error']->notContains([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+                ->string['data']['user']->isIdenticalTo('Administrateur')
+            ;
+
+            $p    = $api->post('/login', ['user' => 'error', 'password' => sha1('error')]);
+            $json = $p->json;
+
+            echo $api->echoBody();
+
+            $json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(500)
+                ->string['error'][0]->isIdenticalTo('Your credential are not reconized')
             ;
         }
     }
