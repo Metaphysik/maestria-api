@@ -7,14 +7,14 @@ $app = resolve('hoa://Application/');
 // Autoconfiguration du PATH
 $paths = [
 	$app .'/../../maestria-web/', // Bureau
-	$app .'/../../www/',          // Maison
+	$app .'/../../maestria/www/', // Maison
 ];
 
 $db = false;
 foreach ($paths as $key => $value) {
 	if($db === false) {
 		if(false !== $db = realpath($value) ) {
-			break
+			break;
 		}
 	}
 }
