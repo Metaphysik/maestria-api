@@ -1,11 +1,5 @@
 <?php
-namespace Maestria\Api {
-    class Main
-    {
-    }
-}
-
-namespace Maestria\Api\Tests\Unit {
+namespace Application\Controller\Tests\Unit {
 
     class Main extends \atoum\test
     {
@@ -47,7 +41,7 @@ namespace Maestria\Api\Tests\Unit {
             $p    = $api->post('/login', ['user' => 'error', 'password' => sha1('error')]);
             $json = $p->json;
 
-            echo $api->echoBody();
+            // echo $api->echoBody();
 
             $json
                 ->hasKey('status')

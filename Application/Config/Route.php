@@ -6,21 +6,22 @@
 $this->get('/', ['as' => 'root', 'to' => 'Main#index']);              // Help message
 $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo, pass: bawa
 
-$this->resource('etablissement');
+//$this->resource('etablissement');
 
 // Need Etablissement key (Ekey)
 $this->resource('user');
-
-$evaluation = $this->resource('evaluation');
-$evaluation->resource('question');
-$evaluation->resource('answer');
-
-$this->resource('classroom');
+// 
+// $evaluation = $this->resource('evaluation');
+// 
+// $evaluation->resource('question');
+// $evaluation->resource('answer');
+// 
+// $this->resource('classroom');
 
 // No Ekey
-$this->resource('theme');
-$this->resource('domain');
-$this->resource('know');
+// $this->resource('theme');
+// $this->resource('domain');
+// $this->resource('know');
 
 /* Error Handler */
 

@@ -19,7 +19,10 @@ class Generic extends Kit
 
     public function log($message, $data = [])
     {
-        $this->_message['log'][] = vsprintf($message, $data);
+        if(is_array($message) === true)
+            $this->_message['log'][] = $message;
+        else
+            $this->_message['log'][] = vsprintf($message, $data);
     }
 
     public function data($message)
