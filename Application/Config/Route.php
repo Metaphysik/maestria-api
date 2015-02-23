@@ -3,18 +3,23 @@
 /* @var $framework \Sohoa\Framework\Framework */
 
 // Defines the defaults route
-$this->get('/', ['as' => 'root', 'to' => 'Main#index']);              // Help message
+$this->get('/', ['as' => 'root', 'to' => 'Main#index']);            // Help message
 $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo, pass: bawa
 
 //$this->resource('etablissement');
 
 // Need Etablissement key (Ekey)
-$this->resource('user', ['only' =>  ['index', 'show']]);
+$this
+	->resource('user', 			['only' =>  ['index', 'show']])
+	->resource('evaluation', 	['only' =>  ['index', 'show']]) 	// TEST iT
+	->resource('answer', 		['only' =>  ['index', 'show']]) 	// TEST iT
+;
+	
 
 $evaluation = $this->resource('evaluation', ['only' => ['index', 'show']]);
 $eval = clone $evaluation;
-$evaluation->resource('question', ['only' => ['index', 'show']]);
-$eval->resource('answer', ['only' => ['index', 'show']]);
+$evaluation->resource('question', ['only' => ['index', 'show']]); 	// TEST iT
+$eval->resource('answer', ['only' => ['index', 'show']]); 			// TEST iT
 
 // 
 // $this->resource('classroom');
