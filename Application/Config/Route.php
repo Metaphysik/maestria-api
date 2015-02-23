@@ -12,9 +12,10 @@ $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo
 $this->resource('user', ['only' =>  ['index', 'show']]);
 
 $evaluation = $this->resource('evaluation', ['only' => ['index', 'show']]);
+$eval = clone $evaluation;
+$evaluation->resource('question', ['only' => ['index', 'show']]);
+$eval->resource('answer', ['only' => ['index', 'show']]);
 
-$evaluation->resource('question');
-// $evaluation->resource('answer');
 // 
 // $this->resource('classroom');
 

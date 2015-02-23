@@ -27,6 +27,7 @@ class Api extends \atoum\asserters\variable
         $this->_view       = $this->_framework->getView();
 
         $this->_router->construct();
+        // print_r($this->_router->dump());
     }
 
     public function __call($name, $arg)
