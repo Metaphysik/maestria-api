@@ -1,9 +1,6 @@
 <?php
 namespace Application\Controller\Tests\Unit {
 
-    require_once __DIR__.'/../../../Application/Controller/Generic.php';
-    require_once __DIR__.'/../../../Application/Controller/User.php';
-
     class User extends \atoum\test
     {
         public function beforeTestMethod($testMethod)
