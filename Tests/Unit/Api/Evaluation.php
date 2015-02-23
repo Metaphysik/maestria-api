@@ -1,65 +1,60 @@
 <?php
 namespace Application\Controller\Tests\Unit {
 
-    class User extends \atoum\test
+    class Evaluation extends \atoum\test
     {
         public function beforeTestMethod($testMethod)
         {
             $this->define->api = '\Camael\Api\Tests\Unit\Asserters\Api';
         }
 
-        // index   => List all users
+        // index   => List all users ?nb=50&start=50 | ?filter=(all|count)
         public function testIndex()
         {
             $api        = $this->api;
-            $request    = $api->get('/user/');
-
-            // echo $api->echoBody();
+            $request    = $api->get('/evaluation/');
             
+            // echo $api->echoBody();
+
             $request->json
                 ->hasKey('status')
                 ->integer['status']->isIdenticalTo(200)
-                ->integer['log'][0]['nb']
+                ->integer['log'][0]['nb']->isIdenticalTo(12)
             ;
 
-            $request->data 
-                ->string[0]['idProfil']->isIdenticalTo('1')
-                ->string[0]['login']->isIdenticalTo('admin')
-                ->string[0]['user']->isIdenticalTo('Administrateur')
-            ;
+            $request->data->string[0]['idEvaluation'];
+            $request->data->string[0]['label'];
+            $request->data->string[0]['description'];
+            $request->data->string[0]['user'];
         }
 
         // show    => get user
         public function testShow()
         {
             $api        = $this->api;
-            $request    = $api->get('/user/1'); // Real user
+            $request    = $api->get('/evaluation/1');
 
             // echo $api->echoBody();
             
             $request->json
                 ->hasKey('status')
                 ->integer['status']->isIdenticalTo(200)
-                ->string['log'][0]->isIdenticalTo('user 1 exists')
+                ->string['log'][0]->isIdenticalTo('evaluation 1 exists')
             ;
 
             $request->data 
-                ->string['idProfil']->isIdenticalTo('1')
-                ->string['login']->isIdenticalTo('admin')
-                ->string['user']->isIdenticalTo('Administrateur')
+                ->string['idEvaluation']->isIdenticalTo('1')
             ;
             
-            $request    = $api->get('/user/999999999'); // Bad user
+            $request    = $api->get('/evaluation/999999999'); // Bad user
 
             // echo $api->echoBody();
             
             $request->json
                 ->hasKey('status')
                 ->integer['status']->isIdenticalTo(500)
-                ->string['error'][0]->isIdenticalTo('user 999999999 not exists')
+                ->string['error'][0]->isIdenticalTo('evaluation 999999999 not exists')
             ;
-
-           
 
         }
     }

@@ -6,12 +6,7 @@ class User extends Generic
 {
     public function indexAction()
     {
-        $query  = $this->router->getQuery();
-        $filter = isset($query['filter']) ? $query['filter'] : null;
-        $start  = isset($query['start'])  ? $query['start']  : 0;
-        $nb     = isset($query['nb'])     ? $query['nb']     : 50;
         $user   = new \Application\Model\User();
-        $data   = [];
         $all    = $user->all();
         
         $this->log(['nb' => count($all)]);

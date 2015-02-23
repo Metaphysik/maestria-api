@@ -9,11 +9,11 @@ $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo
 //$this->resource('etablissement');
 
 // Need Etablissement key (Ekey)
-$this->resource('user');
-// 
-// $evaluation = $this->resource('evaluation');
-// 
-// $evaluation->resource('question');
+$this->resource('user', ['only' =>  ['index', 'show']]);
+
+$evaluation = $this->resource('evaluation', ['only' => ['index', 'show']]);
+
+$evaluation->resource('question');
 // $evaluation->resource('answer');
 // 
 // $this->resource('classroom');

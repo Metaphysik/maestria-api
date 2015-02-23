@@ -23,13 +23,13 @@ if ($db === false) {
     throw new \Exception("You need to config the Maestria config dir in ".__FILE__, 1);
 }
 
-if (file_exists($db.'/Application/Database/Maestria.db') === false) {
-    throw new \Exception('You need to install/generate Metaphsik/Maestria-web repository before use it');
+if (file_exists($db.'/Application/Database/Maestria-test.db') === false) {
+    throw new \Exception('You need to install/generate testsuite in Metaphsik/Maestria-web repository before use it');
 }
 
 \Hoa\Database\Dal::initializeParameters(array(
     'connection.list.default.dal' => Hoa\Database\Dal::PDO,
-    'connection.list.default.dsn' => 'sqlite:'.$db.'/Application/Database/Maestria.db',
+    'connection.list.default.dsn' => 'sqlite:'.$db.'/Application/Database/Maestria-test.db',
     'connection.autoload' => 'default',
 ));
 

@@ -8,7 +8,7 @@ namespace Application\Controller\Tests\Unit {
             $this->define->api = '\Camael\Api\Tests\Unit\Asserters\Api';
         }
 
-        public function testRoot()
+        public function testIndex()
         {
             $this->api->get('/')->body->contains('Maestria API');
         }
