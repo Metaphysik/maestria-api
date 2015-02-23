@@ -22,7 +22,7 @@ class Question extends Generic
         
         if($question->exists($question_id) === true) {
             $this->log('question %s exists', $question_id);
-            $this->data($question->getID($question_id));
+            $this->data($question->getID($question_id)[0]);
 
         }
         else {

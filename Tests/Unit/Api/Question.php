@@ -14,15 +14,48 @@ namespace Application\Controller\Tests\Unit {
             $api        = $this->api;
             $request    = $api->get('/evaluation/1/question/');
 
-            echo $api->echoBody();
+            // echo $api->echoBody();
             
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200)
+                ->integer['log'][0]['nb']
+            ;
+
+            $request->data 
+                ->string[0]['idQuestion']->isIdenticalTo('1')
+                ->string[0]['title']
+            ;
          
         }
 
         // show    => get user
         public function testShow()
         {
+            $api        = $this->api;
+            $request    = $api->get('/evaluation/1/question/1');
 
+            // echo $api->echoBody();
+            
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200)
+                ->string['log'][0]->isIdenticalTo('question 1 exists')
+            ;
+
+            $request->data 
+                ->string['idQuestion']->isIdenticalTo('1')
+            ;
+            
+            $request    = $api->get('/evaluation/1/question/999999999'); // Bad user
+
+            // echo $api->echoBody();
+            
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(500)
+                ->string['error'][0]->isIdenticalTo('question 999999999 not exists')
+            ;
         }
     }
 }
