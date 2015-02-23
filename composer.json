@@ -13,9 +13,7 @@
     },
       "autoload": {
         "psr-4": {
-            "Camael\\": "3Party/",
-            "Application\\Model\\" : "./../maestria/www/Application/Model",
-            "Application\\Contoller\\": "Application/Controller"
+            "Camael\\": "3Party/"
         }
     }
 }

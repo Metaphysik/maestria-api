@@ -14,6 +14,9 @@ class Api extends \atoum\asserters\variable
     {
         parent::__construct();
 
+        $dir = realpath(__DIR__.'/../../');
+        \Sohoa\Framework\Framework::initialize($dir);
+
         $this->_framework  = new \Sohoa\Framework\Framework();
         $this->_router     = new \Mock\Sohoa\Framework\Router();
 
