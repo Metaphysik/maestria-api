@@ -28,7 +28,7 @@ $this->resource('classroom', ['only' => ['index', 'show']]);
 
 // No Ekey
 $this->resource('theme', ['only' => ['index', 'show']]);
-// $this->resource('domain', ['only' => ['index', 'show']]);
+$this->resource('domain', ['only' => ['index', 'show']]);
 // $this->resource('know', ['only' => ['index', 'show']]);
 
 /* Error Handler */
