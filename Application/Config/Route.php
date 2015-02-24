@@ -18,18 +18,18 @@ $this
 
 $evaluation = $this->resource('evaluation', ['only' => ['index', 'show']]);
 
-$eval = clone $evaluation;
+$eval = clone $evaluation; // Création d'une bifurcation
 
 $evaluation->resource('question', ['only' => ['index', 'show']]); 	// TEST iT
 $eval->resource('answer', ['only' => ['index']]); 			// TEST iT
 
 // 
-// $this->resource('classroom');
+$this->resource('classroom', ['only' => ['index', 'show']]);
 
 // No Ekey
-// $this->resource('theme');
-// $this->resource('domain');
-// $this->resource('know');
+// $this->resource('theme', ['only' => ['index', 'show']]);
+// $this->resource('domain', ['only' => ['index', 'show']]);
+// $this->resource('know', ['only' => ['index', 'show']]);
 
 /* Error Handler */
 
