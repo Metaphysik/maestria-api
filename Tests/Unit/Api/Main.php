@@ -13,7 +13,7 @@ namespace Application\Controller\Tests\Unit {
             $api = $this->api;
             $api->get('/')->body->contains('Maestria API')->contains('This message');
             
-            echo $api->echoBody();
+            // echo $api->echoBody();
         }
 
         public function testLogin()
