@@ -59,6 +59,15 @@ namespace Application\Controller\Tests\Unit {
                 ->string['error'][0]->isIdenticalTo('user 999999999 not exists')
             ;
 
+            $request    = $api->get('/user/3'); // Bad user
+
+            // echo $api->echoBody();
+            
+            $request->data 
+                ->string['idProfil']->isIdenticalTo('3')
+                ->string['login']->isIdenticalTo('prof')
+                ->string['user']->isIdenticalTo('Professor')
+            ;
            
 
         }

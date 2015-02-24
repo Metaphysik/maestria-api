@@ -10,7 +10,10 @@ namespace Application\Controller\Tests\Unit {
 
         public function testIndex()
         {
-            $this->api->get('/')->body->contains('Maestria API');
+            $api = $this->api;
+            $api->get('/')->body->contains('Maestria API')->contains('This message');
+            
+            echo $api->echoBody();
         }
 
         public function testLogin()

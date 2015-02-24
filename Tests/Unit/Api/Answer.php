@@ -8,13 +8,12 @@ namespace Application\Controller\Tests\Unit {
             $this->define->api = '\Camael\Api\Tests\Unit\Asserters\Api';
         }
 
-        // index   => List all users
         public function testIndex()
         {
             $api        = $this->api;
             $request    = $api->get('/evaluation/1/answer/');
 
-            echo $api->echoBody();
+            // echo $api->echoBody();
 
             $request->json
                 ->hasKey('status')
@@ -28,10 +27,34 @@ namespace Application\Controller\Tests\Unit {
             $request->data->array['note']->isNotEmpty();
         }
 
-        // show    => get user
-        public function testShow()
+        public function testUserIndex()
         {
-           
+            $api        = $this->api;
+            $request    = $api->get('/user/1/evaluation/1/answer/');
+
+            // echo $api->echoBody();
+
+             $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(500)
+                ->string['error'][0]->isIdenticalTo('answer 1 not exists with 1 user_id')
+            ;
+
+            $request    = $api->get('/user/6/evaluation/1/answer/');
+
+            // echo $api->echoBody();
+
+             $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200)
+                ->string['log'][0]->isIdenticalTo('answer 1 exists with 6 user_id')
+            ;
+
+            $request->data->string['idAnswer']->isIdenticalTo('1');
+            $request->data->string['login'];
+            $request->data->string['user'];
+            $request->data->array['note']->isNotEmpty();
         }
+
     }
 }

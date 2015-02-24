@@ -6,8 +6,31 @@ class Main extends Generic
 {
     public function indexAction()
     {
-        echo '<html><head><title>Maestria Api</title></head><body><h1>Maestria API</h1><h2>Contact administrator</h2></body></html>';
-        // TODO : Help message with full api
+        $dump = $this->router->dump();
+
+        $help = [
+            'root' => 'This message',
+            'login' => 'Test user credential',
+            'indexuser' => 'All user password in sha1 with class & domain',
+            'showUser'  => 'Get user information with class & domain'
+        ];
+
+        $private = [
+            '--error--',
+            '--err404--',
+            'ErrorException',
+        ];
+
+        echo '<h1>Maestria API</h1>';
+        echo '<table><thead><tr><th>ID</th><th>Match rule</th><th>Method</th><th>Controller</th><th>Help message</th></tr></thead>'."\n";
+        echo '<tbody>'."\n";
+
+        foreach ($dump as $rule) {
+            if(in_array($rule[0], $private) === false)
+                echo '<tr><td>'.$rule[0].'</td><td>'.$rule[2].'</td><td>'.$rule[1].'</td><td>'.$rule[3].'</td><td>'.((isset($help[$rule[0]]) === true) ? $help[$rule[0]] : '' ).'</td></tr>'."\n";
+        }
+        echo '</tbody>';
+        echo '</table>';
     }
 
     public function loginAction()
@@ -22,10 +45,6 @@ class Main extends Generic
         if ($password === null) {
             $this->nok('Post data : password are not found');
         }
-
-        $this->log($user);
-        $this->log($password);
-
 
         $m_user = new \Application\Model\User();
         $bool   = $m_user->check($user, $password, true);

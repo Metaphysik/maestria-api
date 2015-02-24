@@ -4,18 +4,29 @@ namespace Application\Controller;
 
 class Evaluation extends Generic
 {
-    public function indexAction()
+    public function indexAction($user_id = null)
     {
-        $evaluation = new \Application\Model\Evaluation();
-        $all = $evaluation->all();
-        
-        $this->log(['nb' => count($all)]);
-        $this->data($all);
+
+        if($user_id !== null) {
+
+            $evaluation = new \Application\Model\Evaluation($user_id);
+            $all = $evaluation->mine();
+            $this->log('You log only professor evaluation');
+            $this->log(['nb' => count($all)]);
+            $this->data($all);
+        }
+        else {
+            $evaluation = new \Application\Model\Evaluation();
+            $all = $evaluation->all();
+            
+            $this->log(['nb' => count($all)]);
+            $this->data($all);
+        }
         
         echo $this->getApiJson();
     }
 
-    public function showAction($evaluation_id)
+    public function showAction($evaluation_id = null, $user_id = null)
     {
         
         $evaluation = new \Application\Model\Evaluation();

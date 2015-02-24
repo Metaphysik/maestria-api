@@ -12,14 +12,16 @@ $this->any('/login', ['as' => 'login', 'to' => 'Main#Login']);      // user: foo
 $this
 	->resource('user', 			['only' =>  ['index', 'show']])
 	->resource('evaluation', 	['only' =>  ['index', 'show']]) 	// TEST iT
-	->resource('answer', 		['only' =>  ['index', 'show']]) 	// TEST iT
+	->resource('answer', 		['only' =>  ['index']]) 	// TEST iT
 ;
 	
 
 $evaluation = $this->resource('evaluation', ['only' => ['index', 'show']]);
+
 $eval = clone $evaluation;
+
 $evaluation->resource('question', ['only' => ['index', 'show']]); 	// TEST iT
-$eval->resource('answer', ['only' => ['index', 'show']]); 			// TEST iT
+$eval->resource('answer', ['only' => ['index']]); 			// TEST iT
 
 // 
 // $this->resource('classroom');

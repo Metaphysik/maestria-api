@@ -57,5 +57,43 @@ namespace Application\Controller\Tests\Unit {
             ;
 
         }
+
+        public function testUserIndex()
+        {
+            $api        = $this->api;
+            $request    = $api->get('/user/1/evaluation/'); // Admin
+
+            // echo $api->echoBody();
+
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200)
+                ->integer['log'][1]['nb']->isIdenticalTo(0)
+            ;
+
+            $request->data ->isEmpty();
+            
+            $request    = $api->get('/user/3/evaluation/'); // Bad user
+
+            // echo $api->echoBody();
+            
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200)
+                ->integer['log'][1]['nb']->isGreaterThan(0)
+            ;
+
+        }
+
+        public function testUserShow()
+        {
+            $api        = $this->api;
+            $request    = $api->get('/user/1/evaluation/1');
+
+            $request->json
+                ->hasKey('status')
+                ->integer['status']->isIdenticalTo(200) // No specific treatment same as /evaluation/1 only alias
+            ;
+        }
     }
 }
