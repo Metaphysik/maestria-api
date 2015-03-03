@@ -33,8 +33,8 @@ $this->resource('domain', ['only' => ['index', 'show']]);
 
 /* Error Handler */
 
-$err = $this->getFramework()->getErrorHandler();
-$err->handleErrorsAsException();
-$err->routeError(\Sohoa\Framework\ErrorHandler::ROUTE_ALL_ERROR, 'Error#Default');
-$err->routeError(\Sohoa\Framework\ErrorHandler::ROUTE_ERROR_404, 'Error#Err404');
-$err->routeError('\ErrorException', 'Error#PHP');
+//$err = $this->getFramework()->getErrorHandler();
+//$err->handleErrorsAsException();
+//$err->routeError(\Sohoa\Framework\ErrorHandler::ROUTE_ALL_ERROR, 'Error#Default');
+//$err->routeError(\Sohoa\Framework\ErrorHandler::ROUTE_ERROR_404, 'Error#Err404');
+//$err->routeError('\ErrorException', 'Error#PHP');
